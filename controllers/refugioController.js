@@ -33,7 +33,7 @@ class RefugioController {
       const refugioId = getRefugio[0]["_id"];
       const refugio = getRefugio[0]["nombre"];      
       const getMascota = await this.mascotaService.getMascotaByRefugio(refugioId);
-      console.log(getMascota)
+      
       const mascotas = getMascota.map((mascotas) => {
         const dataPet = 
           {

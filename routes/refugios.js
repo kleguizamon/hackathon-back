@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const MascotaService = require("../services/mascotaService");
 const RefugioController = require("../controllers/refugioController");
 const RefugioService = require("../services/refugioService");
-const RefugioInstance = new RefugioController(new RefugioService());
+const RefugioInstance = new RefugioController(new RefugioService(),new MascotaService());
 
 router.get("/", (req, res) => {
   RefugioInstance.getRefugio(req, res);
