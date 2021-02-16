@@ -34,13 +34,13 @@ class RefugioController {
       const refugio = getRefugio[0]["nombre"];      
       const getMascota = await this.mascotaService.getMascotaByRefugio(refugioId);
       
-      const mascotas = getMascota.map((mascotas) => {
+      const mascotas = getMascota.map(({ nombre, status, sexo, especie }) => {
         const dataPet = 
           {
-            mascota: mascotas.nombre,
-            status: mascotas.status,
-            sexo: mascotas.sexo,
-            especie: mascotas.especie,
+            mascota: nombre,
+            status: status,
+            sexo: sexo,
+            especie: especie,
           }
         return dataPet;
       });
@@ -61,15 +61,7 @@ class RefugioController {
       image,
     } = req.body;
 
-    if (
-      nombre &&
-      whatsapp &&
-      url_donar &&
-      direccion &&
-      ciudad &&
-      instagram &&
-      image
-    ) {
+    if (nombre && whatsapp && url_donar && direccion && ciudad && instagram && image) {
       const refugio = {
         nombre: nombre,
         whatsapp: whatsapp,
